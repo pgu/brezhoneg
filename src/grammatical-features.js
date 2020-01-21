@@ -1,14 +1,14 @@
-
 export const gr_tense = {
-  present: 'present',
+  present: "present"
 };
 
 export const gr_person = {
-  first: 'first',
-  second: 'second',
+  first: "first",
+  second: "second",
+  third: "third"
 };
 
 export const gr_number = {
-  singular: 'singular',
-  plural: 'plural',
+  singular: "singular",
+  plural: "plural"
 };
