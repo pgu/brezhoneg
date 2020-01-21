@@ -9,6 +9,7 @@ test("should return present tense of bezañ", () => {
       number: gr_number.singular
     })
   ).toBe("on");
+
   expect(
     bezan({
       tense: gr_tense.present,
@@ -16,6 +17,7 @@ test("should return present tense of bezañ", () => {
       number: gr_number.singular
     })
   ).toBe("out");
+
   expect(
     bezan({
       tense: gr_tense.present,
