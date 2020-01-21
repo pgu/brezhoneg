@@ -25,4 +25,28 @@ test("should return present tense of bezañ", () => {
       number: gr_number.singular
     })
   ).toBe("eo");
+
+  expect(
+    bezan({
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural
+    })
+  ).toBe("omp");
+
+  expect(
+    bezan({
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural
+    })
+  ).toBe("oc'h");
+
+  expect(
+    bezan({
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural
+    })
+  ).toBe("int");
 });
