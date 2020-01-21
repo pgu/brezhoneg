@@ -1,52 +1,52 @@
-import { gr_tense, gr_person, gr_number } from "./grammatical-features";
-import { bezan } from "./bezan";
+import { gr_tense, gr_person, gr_number } from './grammatical-features';
+import { bezan } from './bezan';
 
-test("should return present tense of bezañ", () => {
+test('should return present tense of bezañ', () => {
   expect(
     bezan({
       tense: gr_tense.present,
       person: gr_person.first,
-      number: gr_number.singular
+      number: gr_number.singular,
     })
-  ).toBe("on");
+  ).toBe('on');
 
   expect(
     bezan({
       tense: gr_tense.present,
       person: gr_person.second,
-      number: gr_number.singular
+      number: gr_number.singular,
     })
-  ).toBe("out");
+  ).toBe('out');
 
   expect(
     bezan({
       tense: gr_tense.present,
       person: gr_person.third,
-      number: gr_number.singular
+      number: gr_number.singular,
     })
-  ).toBe("eo");
+  ).toBe('eo');
 
   expect(
     bezan({
       tense: gr_tense.present,
       person: gr_person.first,
-      number: gr_number.plural
+      number: gr_number.plural,
     })
-  ).toBe("omp");
+  ).toBe('omp');
 
   expect(
     bezan({
       tense: gr_tense.present,
-      person: gr_person.first,
-      number: gr_number.plural
+      person: gr_person.second,
+      number: gr_number.plural,
     })
   ).toBe("oc'h");
 
   expect(
     bezan({
       tense: gr_tense.present,
-      person: gr_person.first,
-      number: gr_number.plural
+      person: gr_person.third,
+      number: gr_number.plural,
     })
-  ).toBe("int");
+  ).toBe('int');
 });
