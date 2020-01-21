@@ -1,4 +1,9 @@
-import { gr_person, gr_tense, gr_number } from './grammatical-features';
+import {
+  gr_person,
+  gr_tense,
+  gr_number,
+  gr_subject,
+} from './grammatical-features';
 
 const conjugation = {
   [gr_tense.present]: {
@@ -15,6 +20,19 @@ const conjugation = {
   },
 };
 
-export function bezan({ tense, number, person }) {
-  return conjugation[tense][number][person];
+export function bezan({
+  subject = gr_subject.isNotPresent,
+  tense,
+  number,
+  person,
+}) {
+  if (subject === gr_subject.isNotPresent) {
+    return conjugation[tense][number][person];
+  } else if (subject === gr_subject.isBefore) {
+    return 'zo';
+  } else if (subject === gr_subject.isAfter) {
+    return undefined;
+  } else {
+    throw Error(`Undefined 'subject': ${subject}`);
+  }
 }
