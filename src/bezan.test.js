@@ -111,3 +111,4 @@ test('should return present tense of bezañ when a subject is specified and is b
     })
   ).toBe('zo');
 });
+// TODO ez eus

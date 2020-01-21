@@ -29,9 +29,13 @@ export function bezan({
   if (subject === gr_subject.isNotPresent) {
     return conjugation[tense][number][person];
   } else if (subject === gr_subject.isBefore) {
-    return 'zo';
+    if (tense === gr_tense.present) {
+      return 'zo';
+    } else {
+      throw Error(`Unsupported tense: ${tense}`);
+    }
   } else if (subject === gr_subject.isAfter) {
-    return undefined;
+    throw Error(`Unsupported subject: ${subject}`);
   } else {
     throw Error(`Undefined 'subject': ${subject}`);
   }
