@@ -1,7 +1,7 @@
 import { gr_tense, gr_person, gr_number } from './grammatical-features';
 import { bezan } from './bezan';
 
-test('should return present tense of bezañ', () => {
+test('should return present tense of bezañ when no subject is specified', () => {
   expect(
     bezan({
       tense: gr_tense.present,
