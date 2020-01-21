@@ -3,6 +3,7 @@ import {
   gr_tense,
   gr_number,
   gr_subject,
+  gr_mode,
 } from './grammatical-features';
 
 const conjugation = {
@@ -20,12 +21,30 @@ const conjugation = {
   },
 };
 
+const conjugationForLocation = {
+  [gr_number.singular]: {
+    [gr_person.first]: 'emaon',
+    [gr_person.second]: 'emaout',
+    [gr_person.third]: 'emañ',
+  },
+  [gr_number.plural]: {
+    [gr_person.first]: 'emaomp',
+    [gr_person.second]: "emaoc'h",
+    [gr_person.third]: 'emaint',
+  },
+};
+
 export function bezan({
   subject = gr_subject.isNotPresent,
+  mode,
   tense,
   number,
   person,
 }) {
+  if (mode === gr_mode.isLocation) {
+    return conjugationForLocation[number][person];
+  }
+
   if (subject === gr_subject.isNotPresent) {
     return conjugation[tense][number][person];
   } else if (subject === gr_subject.isBefore) {

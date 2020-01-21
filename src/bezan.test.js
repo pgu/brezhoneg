@@ -3,8 +3,11 @@ import {
   gr_person,
   gr_number,
   gr_subject,
+  gr_mode,
 } from './grammatical-features';
 import { bezan } from './bezan';
+
+// TODO ez eus
 
 test('should return present tense of bezañ when no subject is specified', () => {
   expect(
@@ -111,4 +114,59 @@ test('should return present tense of bezañ when a subject is specified and is b
     })
   ).toBe('zo');
 });
-// TODO ez eus
+
+test('should return present tense of bezañ in location mode', () => {
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('emaon');
+
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('emaout');
+
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('emañ');
+
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('emaomp');
+
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe("emaoc'h");
+
+  expect(
+    bezan({
+      mode: gr_mode.isLocation,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('emaint');
+});

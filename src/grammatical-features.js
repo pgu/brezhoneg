@@ -18,3 +18,7 @@ export const gr_subject = {
   isAfter: 'isAfter',
   isNotPresent: 'isNotPresent',
 };
+
+export const gr_mode = {
+  isLocation: 'isLocation',
+};
