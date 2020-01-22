@@ -51,7 +51,7 @@ export function bezan({
         throw Error(`Unsupported tense for location: ${tense}`);
       }
     } else {
-      if (!before || before === gr_entity.attribute) {
+      if (before === gr_entity.attribute) {
         return conjugation[tense][number][person];
       } else if (before === gr_entity.subject) {
         if (tense === gr_tense.present) {
