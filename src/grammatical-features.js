@@ -29,6 +29,8 @@ export const gr_number = {
 export const gr_entity = {
   attribute: 'attribute',
   subject: 'subject',
+  ccl: 'ccl',
+  present_participle: 'present_participle',
 };
 
 export const gr_subject_type = {

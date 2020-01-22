@@ -196,13 +196,13 @@ test('should return present tense of bezañ when a subject is specified and is b
 
 /**
  * Present
- * CCL or Present participle | verb | subject
+ * CCL | verb | subject
  * CCL: complément circonstanciel de lieu <=> adverbial phrase of place
  */
 test('should return present tense of bezañ in location semantic', () => {
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.singular,
@@ -211,7 +211,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.singular,
@@ -220,7 +220,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.singular,
@@ -229,7 +229,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.plural,
@@ -238,7 +238,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.plural,
@@ -247,7 +247,67 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      semantic: gr_semantic.isLocation,
+      before: gr_entity.ccl,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('emaint');
+});
+
+/**
+ * Present
+ * Present participle | verb | subject
+ */
+test('should return present tense of bezañ when used with present participle', () => {
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('emaon');
+
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('emaout');
+
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('emañ');
+
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('emaomp');
+
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe("emaoc'h");
+
+  expect(
+    bezan({
+      before: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.plural,

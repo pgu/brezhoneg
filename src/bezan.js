@@ -41,7 +41,6 @@ const conjugationForLocation = {
 
 export function bezan({
   before,
-  semantic,
   form = gr_form.affirmative,
   mode = gr_mode.indicative,
   tense,
@@ -50,30 +49,31 @@ export function bezan({
   subjectType = gr_subject_type.definedSubject,
 }) {
   if (subjectType === gr_subject_type.definedSubject) {
-    if (semantic === gr_semantic.isLocation) {
+    if (before === gr_entity.attribute) {
+      return conjugation[mode][tense][number][person];
+    } else if (before === gr_entity.subject) {
+      if (form === gr_form.negative) {
+        return "n'" + conjugation[mode][tense][number][person] + ' ket';
+      } else if (form === gr_form.affirmative) {
+        if (mode === gr_mode.indicative && tense === gr_tense.present) {
+          return 'zo';
+        } else {
+          throw Error(`Unsupported tense ${tense} and mode ${mode}`);
+        }
+      } else {
+        throw Error(`Unsupported form ${form}`);
+      }
+    } else if (
+      before === gr_entity.ccl ||
+      before === gr_entity.present_participle
+    ) {
       if (tense === gr_tense.present && mode === gr_mode.indicative) {
         return conjugationForLocation[number][person];
       } else {
         throw Error(`Unsupported tense ${tense} or mode ${mode} for location.`);
       }
     } else {
-      if (before === gr_entity.attribute) {
-        return conjugation[mode][tense][number][person];
-      } else if (before === gr_entity.subject) {
-        if (form === gr_form.negative) {
-          return "n'" + conjugation[mode][tense][number][person] + ' ket';
-        } else if (form === gr_form.affirmative) {
-          if (mode === gr_mode.indicative && tense === gr_tense.present) {
-            return 'zo';
-          } else {
-            throw Error(`Unsupported tense ${tense} and mode ${mode}`);
-          }
-        } else {
-          throw Error(`Unsupported form ${form}`);
-        }
-      } else {
-        throw Error(`Undefined 'before': ${before}`);
-      }
+      throw Error(`Undefined 'before': ${before}`);
     }
   } else if (subjectType === gr_subject_type.undefinedSubject) {
   } else {
