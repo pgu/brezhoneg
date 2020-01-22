@@ -3,21 +3,24 @@ import {
   gr_tense,
   gr_number,
   gr_entity,
-  gr_mode,
+  gr_form,
   gr_subject_type,
+  gr_mode,
 } from './grammatical-features';
 
 const conjugation = {
-  [gr_tense.present]: {
-    [gr_number.singular]: {
-      [gr_person.first]: 'on',
-      [gr_person.second]: 'out',
-      [gr_person.third]: 'eo',
-    },
-    [gr_number.plural]: {
-      [gr_person.first]: 'omp',
-      [gr_person.second]: "oc'h",
-      [gr_person.third]: 'int',
+  [gr_mode.indicative]: {
+    [gr_tense.present]: {
+      [gr_number.singular]: {
+        [gr_person.first]: 'on',
+        [gr_person.second]: 'out',
+        [gr_person.third]: 'eo',
+      },
+      [gr_number.plural]: {
+        [gr_person.first]: 'omp',
+        [gr_person.second]: "oc'h",
+        [gr_person.third]: 'int',
+      },
     },
   },
 };
@@ -37,27 +40,28 @@ const conjugationForLocation = {
 
 export function bezan({
   before,
-  mode,
+  form,
+  mode = gr_mode.indicative,
   tense,
   number,
   person,
   subjectType = gr_subject_type.definedSubject,
 }) {
   if (subjectType === gr_subject_type.definedSubject) {
-    if (mode === gr_mode.isLocation) {
-      if (tense === gr_tense.present) {
+    if (form === gr_form.isLocation) {
+      if (tense === gr_tense.present && mode === gr_mode.indicative) {
         return conjugationForLocation[number][person];
       } else {
-        throw Error(`Unsupported tense for location: ${tense}`);
+        throw Error(`Unsupported tense ${tense} or mode ${mode} for location.`);
       }
     } else {
       if (before === gr_entity.attribute) {
-        return conjugation[tense][number][person];
+        return conjugation[mode][tense][number][person];
       } else if (before === gr_entity.subject) {
-        if (tense === gr_tense.present) {
+        if (mode === gr_mode.indicative && tense === gr_tense.present) {
           return 'zo';
         } else {
-          throw Error(`Unsupported tense: ${tense}`);
+          throw Error(`Unsupported tense ${tense} and mode ${mode}`);
         }
       } else {
         throw Error(`Undefined 'before': ${before}`);

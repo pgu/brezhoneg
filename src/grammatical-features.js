@@ -23,6 +23,13 @@ export const gr_subject_type = {
   undefinedSubject: 'undefinedSubject',
 };
 
-export const gr_mode = {
+export const gr_form = {
   isLocation: 'isLocation',
+};
+
+export const gr_mode = {
+  indicative: 'indicative',
+  imperative: 'imperative',
+  subjonctive: 'subjonctive',
+  conditional: 'conditional',
 };
