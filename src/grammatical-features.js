@@ -18,6 +18,11 @@ export const gr_entity = {
   subject: 'subject',
 };
 
+export const gr_subject_type = {
+  definedSubject: 'definedSubject',
+  undefinedSubject: 'undefinedSubject',
+};
+
 export const gr_mode = {
   isLocation: 'isLocation',
 };

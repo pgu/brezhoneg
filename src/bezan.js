@@ -4,6 +4,7 @@ import {
   gr_number,
   gr_entity,
   gr_mode,
+  gr_subject_type,
 } from './grammatical-features';
 
 const conjugation = {
@@ -34,20 +35,36 @@ const conjugationForLocation = {
   },
 };
 
-export function bezan({ before, mode, tense, number, person }) {
-  if (mode === gr_mode.isLocation) {
-    return conjugationForLocation[number][person];
-  }
-
-  if (!before || before === gr_entity.attribute) {
-    return conjugation[tense][number][person];
-  } else if (before === gr_entity.subject) {
-    if (tense === gr_tense.present) {
-      return 'zo';
+export function bezan({
+  before,
+  mode,
+  tense,
+  number,
+  person,
+  subjectType = gr_subject_type.definedSubject,
+}) {
+  if (subjectType === gr_subject_type.definedSubject) {
+    if (mode === gr_mode.isLocation) {
+      if (tense === gr_tense.present) {
+        return conjugationForLocation[number][person];
+      } else {
+        throw Error(`Unsupported tense for location: ${tense}`);
+      }
     } else {
-      throw Error(`Unsupported tense: ${tense}`);
+      if (!before || before === gr_entity.attribute) {
+        return conjugation[tense][number][person];
+      } else if (before === gr_entity.subject) {
+        if (tense === gr_tense.present) {
+          return 'zo';
+        } else {
+          throw Error(`Unsupported tense: ${tense}`);
+        }
+      } else {
+        throw Error(`Undefined 'before': ${before}`);
+      }
     }
+  } else if (subjectType === gr_subject_type.undefinedSubject) {
   } else {
-    throw Error(`Undefined 'before': ${before}`);
+    throw Error(`Undefined subject type: ${subjectType}`);
   }
 }
