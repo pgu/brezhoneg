@@ -3,9 +3,10 @@ import {
   gr_tense,
   gr_number,
   gr_entity,
-  gr_form,
+  gr_semantic,
   gr_subject_type,
   gr_mode,
+  gr_form,
 } from './grammatical-features';
 
 const conjugation = {
@@ -40,7 +41,8 @@ const conjugationForLocation = {
 
 export function bezan({
   before,
-  form,
+  semantic,
+  form = gr_form.affirmative,
   mode = gr_mode.indicative,
   tense,
   number,
@@ -48,7 +50,7 @@ export function bezan({
   subjectType = gr_subject_type.definedSubject,
 }) {
   if (subjectType === gr_subject_type.definedSubject) {
-    if (form === gr_form.isLocation) {
+    if (semantic === gr_semantic.isLocation) {
       if (tense === gr_tense.present && mode === gr_mode.indicative) {
         return conjugationForLocation[number][person];
       } else {
@@ -58,10 +60,16 @@ export function bezan({
       if (before === gr_entity.attribute) {
         return conjugation[mode][tense][number][person];
       } else if (before === gr_entity.subject) {
-        if (mode === gr_mode.indicative && tense === gr_tense.present) {
-          return 'zo';
+        if (form === gr_form.negative) {
+          return "n'" + conjugation[mode][tense][number][person] + ' ket';
+        } else if (form === gr_form.affirmative) {
+          if (mode === gr_mode.indicative && tense === gr_tense.present) {
+            return 'zo';
+          } else {
+            throw Error(`Unsupported tense ${tense} and mode ${mode}`);
+          }
         } else {
-          throw Error(`Unsupported tense ${tense} and mode ${mode}`);
+          throw Error(`Unsupported form ${form}`);
         }
       } else {
         throw Error(`Undefined 'before': ${before}`);
