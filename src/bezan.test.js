@@ -2,7 +2,7 @@ import {
   gr_tense,
   gr_person,
   gr_number,
-  gr_subject,
+  gr_entity,
   gr_mode,
 } from './grammatical-features';
 import { bezan } from './bezan';
@@ -62,7 +62,7 @@ test('should return present tense of bezañ when no subject is specified', () =>
 test('should return present tense of bezañ when a subject is specified and is before bezañ', () => {
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.singular,
@@ -71,7 +71,7 @@ test('should return present tense of bezañ when a subject is specified and is b
 
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.singular,
@@ -80,7 +80,7 @@ test('should return present tense of bezañ when a subject is specified and is b
 
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.singular,
@@ -89,7 +89,7 @@ test('should return present tense of bezañ when a subject is specified and is b
 
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.plural,
@@ -98,7 +98,7 @@ test('should return present tense of bezañ when a subject is specified and is b
 
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.plural,
@@ -107,7 +107,7 @@ test('should return present tense of bezañ when a subject is specified and is b
 
   expect(
     bezan({
-      subject: gr_subject.isBefore,
+      before: gr_entity.subject,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.plural,

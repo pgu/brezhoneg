@@ -2,7 +2,7 @@ import {
   gr_person,
   gr_tense,
   gr_number,
-  gr_subject,
+  gr_entity,
   gr_mode,
 } from './grammatical-features';
 
@@ -34,28 +34,20 @@ const conjugationForLocation = {
   },
 };
 
-export function bezan({
-  subject = gr_subject.isNotPresent,
-  mode,
-  tense,
-  number,
-  person,
-}) {
+export function bezan({ before, mode, tense, number, person }) {
   if (mode === gr_mode.isLocation) {
     return conjugationForLocation[number][person];
   }
 
-  if (subject === gr_subject.isNotPresent) {
+  if (!before || before === gr_entity.attribute) {
     return conjugation[tense][number][person];
-  } else if (subject === gr_subject.isBefore) {
+  } else if (before === gr_entity.subject) {
     if (tense === gr_tense.present) {
       return 'zo';
     } else {
       throw Error(`Unsupported tense: ${tense}`);
     }
-  } else if (subject === gr_subject.isAfter) {
-    throw Error(`Unsupported subject: ${subject}`);
   } else {
-    throw Error(`Undefined 'subject': ${subject}`);
+    throw Error(`Undefined 'before': ${before}`);
   }
 }
