@@ -38,10 +38,6 @@ export const gr_subject_type = {
   undefinedSubject: 'undefinedSubject',
 };
 
-export const gr_semantic = {
-  isLocation: 'isLocation',
-};
-
 export const gr_form = {
   affirmative: 'affirmative',
   negative: 'negative',

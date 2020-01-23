@@ -3,7 +3,6 @@ import {
   gr_tense,
   gr_number,
   gr_entity,
-  gr_semantic,
   gr_subject_type,
   gr_mode,
   gr_form,
@@ -41,6 +40,7 @@ const conjugationForLocation = {
 
 export function bezan({
   before,
+  after,
   form = gr_form.affirmative,
   mode = gr_mode.indicative,
   tense,
@@ -53,7 +53,11 @@ export function bezan({
       return conjugation[mode][tense][number][person];
     } else if (before === gr_entity.subject) {
       if (form === gr_form.negative) {
-        return "n'" + conjugation[mode][tense][number][person] + ' ket';
+        if (after === gr_entity.present_participle || after === gr_entity.ccl) {
+          return "n'" + conjugationForLocation[number][person] + ' ket';
+        } else {
+          return "n'" + conjugation[mode][tense][number][person] + ' ket';
+        }
       } else if (form === gr_form.affirmative) {
         if (mode === gr_mode.indicative && tense === gr_tense.present) {
           return 'zo';

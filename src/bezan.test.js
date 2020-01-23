@@ -320,3 +320,75 @@ test('should return present tense of bezañ when a subject is before bezañ', ()
     })
   ).toBe('zo');
 });
+
+/**
+ * Present
+ * Subject | verb (negative) | CCL or present participle
+ */
+test('should return present tense of bezañ when a subject is before bezañ and negative and followed by CCL or present participle', () => {
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe("n'emaon ket");
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe("n'emaout ket");
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe("n'emañ ket");
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe("n'emaomp ket");
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe("n'emaoc'h ket");
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
+      form: gr_form.negative,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe("n'emaint ket");
+});
