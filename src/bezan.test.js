@@ -196,10 +196,10 @@ test('should return present tense of bezañ when a subject is before bezañ and 
 
 /**
  * Present
- * CCL | verb | subject
+ * CCL or Present participle | verb | subject
  * CCL: complément circonstanciel de lieu <=> adverbial phrase of place
  */
-test('should return present tense of bezañ in location semantic', () => {
+test('should return present tense of bezañ in location semantic or with present participle', () => {
   expect(
     bezan({
       before: gr_entity.ccl,
@@ -211,7 +211,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      before: gr_entity.ccl,
+      before: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.singular,
@@ -229,7 +229,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      before: gr_entity.ccl,
+      before: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.plural,
@@ -247,7 +247,7 @@ test('should return present tense of bezañ in location semantic', () => {
 
   expect(
     bezan({
-      before: gr_entity.ccl,
+      before: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.plural,
@@ -257,60 +257,66 @@ test('should return present tense of bezañ in location semantic', () => {
 
 /**
  * Present
- * Present participle | verb | subject
+ * Subject | verb (affirmative) | CCL or present participle
  */
-test('should return present tense of bezañ when used with present participle', () => {
+test('should return present tense of bezañ when a subject is before bezañ', () => {
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.singular,
     })
-  ).toBe('emaon');
+  ).toBe('zo');
 
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.singular,
     })
-  ).toBe('emaout');
+  ).toBe('zo');
 
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.singular,
     })
-  ).toBe('emañ');
+  ).toBe('zo');
 
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.first,
       number: gr_number.plural,
     })
-  ).toBe('emaomp');
+  ).toBe('zo');
 
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
       tense: gr_tense.present,
       person: gr_person.second,
       number: gr_number.plural,
     })
-  ).toBe("emaoc'h");
+  ).toBe('zo');
 
   expect(
     bezan({
-      before: gr_entity.present_participle,
+      before: gr_entity.subject,
+      after: gr_entity.present_participle,
       tense: gr_tense.present,
       person: gr_person.third,
       number: gr_number.plural,
     })
-  ).toBe('emaint');
+  ).toBe('zo');
 });
