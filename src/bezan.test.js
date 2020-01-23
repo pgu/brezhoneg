@@ -6,6 +6,7 @@ import {
   gr_semantic,
   gr_form,
   gr_subject_type,
+  gr_mode,
 } from './grammatical-features';
 import { bezan } from './bezan';
 
@@ -426,4 +427,40 @@ test('should return present tense of bezañ when asking for the presence of the 
       number: gr_number.singular,
     })
   ).toBe('zo');
+});
+
+/**
+ * Present
+ * verb (negative) | subject (non-countable or plural)
+ * N'eus ket chistr
+ */
+test('should return present tense of bezañ when stating the non-presence of something', () => {
+  expect(
+    bezan({
+      subjectType: gr_subject_type.undefinedSubject,
+      form: gr_form.negative,
+      number: gr_number.plural,
+      after: gr_entity.subject,
+      tense: gr_tense.present,
+      person: gr_person.third,
+    })
+  ).toBe("n'eus ket");
+});
+
+/**
+ * Present
+ * verb (negative) | subject (singular)
+ * N'eus banne chistr ebet
+ */
+test('should return present tense of bezañ when stating the non-presence of something', () => {
+  expect(
+    bezan({
+      subjectType: gr_subject_type.undefinedSubject,
+      form: gr_form.negative,
+      number: gr_number.singular,
+      after: gr_entity.subject,
+      tense: gr_tense.present,
+      person: gr_person.third,
+    })
+  ).toBe("n'eus %s ebet");
 });

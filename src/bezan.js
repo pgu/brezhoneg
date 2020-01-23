@@ -81,15 +81,30 @@ export function bezan({
     }
     //
   } else if (subjectType === gr_subject_type.undefinedSubject) {
-    if (before === gr_entity.ccl) {
-      return 'ez eus';
-    } else if (before === gr_entity.subject) {
-      return 'zo';
+    //
+    if (form === gr_form.affirmative) {
+      if (before === gr_entity.ccl) {
+        return 'ez eus';
+      } else if (before === gr_entity.subject) {
+        return 'zo';
+      } else {
+        throw Error(`Undefined before ${before}`);
+      }
+      //
+    } else if (form === gr_form.negative) {
+      //
+      if (number === gr_number.singular) {
+        return "n'eus %s ebet";
+      } else if (number === gr_number.plural) {
+        return "n'eus ket";
+      } else {
+        throw Error(`Undefined number ${gr_number}`);
+      }
     } else {
-      throw Error(`Undefined before ${before}`);
+      throw Error(`Undefined form ${form}`);
     }
     //
   } else {
-    throw Error(`Undefined subject type: ${subjectType}`);
+    throw Error(`Undefined subject type ${subjectType}`);
   }
 }
