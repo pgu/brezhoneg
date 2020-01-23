@@ -72,7 +72,7 @@ test('should return present tense of bezañ when an attribute is placed before',
  * Present
  * Subject | verb (affirmative) | attribute
  */
-test('should return present tense of bezañ when a subject is specified and is before bezañ', () => {
+test('should return present tense of bezañ when a subject is before bezañ', () => {
   expect(
     bezan({
       before: gr_entity.subject,
@@ -132,7 +132,7 @@ test('should return present tense of bezañ when a subject is specified and is b
  * Present
  * Subject | verb (negative) | attribute
  */
-test('should return present tense of bezañ when a subject is specified and is before bezañ', () => {
+test('should return present tense of bezañ when a subject is before bezañ and negative', () => {
   expect(
     bezan({
       before: gr_entity.subject,
