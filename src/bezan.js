@@ -79,7 +79,16 @@ export function bezan({
     } else {
       throw Error(`Undefined 'before': ${before}`);
     }
+    //
   } else if (subjectType === gr_subject_type.undefinedSubject) {
+    if (before === gr_entity.ccl) {
+      return 'ez eus';
+    } else if (before === gr_entity.subject) {
+      return 'zo';
+    } else {
+      throw Error(`Undefined before ${before}`);
+    }
+    //
   } else {
     throw Error(`Undefined subject type: ${subjectType}`);
   }

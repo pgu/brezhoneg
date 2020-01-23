@@ -5,6 +5,7 @@ import {
   gr_entity,
   gr_semantic,
   gr_form,
+  gr_subject_type,
 } from './grammatical-features';
 import { bezan } from './bezan';
 
@@ -391,4 +392,38 @@ test('should return present tense of bezañ when a subject is before bezañ and 
       number: gr_number.plural,
     })
   ).toBe("n'emaint ket");
+});
+
+/**
+ * Present
+ * CCL | verb | subject (presence)
+ */
+test('should return present tense of bezañ when asking for the presence of the subject, placed after', () => {
+  expect(
+    bezan({
+      subjectType: gr_subject_type.undefinedSubject,
+      before: gr_entity.ccl,
+      after: gr_entity.subject,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('ez eus');
+});
+
+/**
+ * Present
+ * subject (presence) | verb | CCL
+ */
+test('should return present tense of bezañ when asking for the presence of the subject, placed before', () => {
+  expect(
+    bezan({
+      subjectType: gr_subject_type.undefinedSubject,
+      before: gr_entity.subject,
+      after: gr_entity.ccl,
+      tense: gr_tense.present,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('zo');
 });
