@@ -3,10 +3,8 @@ import {
   gr_person,
   gr_number,
   gr_entity,
-  gr_semantic,
   gr_form,
   gr_subject_type,
-  gr_mode,
 } from './grammatical-features';
 import { bezan } from './bezan';
 
@@ -463,4 +461,64 @@ test('should return present tense of bezañ when stating the non-presence of som
       person: gr_person.third,
     })
   ).toBe("n'eus %s ebet");
+});
+
+/**
+ * Futur
+ * Complement | verb | complement
+ */
+test('should return futur tense of bezañ when a complement is placed before', () => {
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('e vin');
+
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('e vi');
+
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('e vo');
+
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('e vimp');
+
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe("e voc'h");
+
+  expect(
+    bezan({
+      before: gr_entity.complement,
+      tense: gr_tense.future,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('e vint');
 });

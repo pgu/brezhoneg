@@ -22,6 +22,18 @@ const conjugation = {
         [gr_person.third]: 'int',
       },
     },
+    [gr_tense.future]: {
+      [gr_number.singular]: {
+        [gr_person.first]: 'e vin',
+        [gr_person.second]: 'e vi',
+        [gr_person.third]: 'e vo',
+      },
+      [gr_number.plural]: {
+        [gr_person.first]: 'e vimp',
+        [gr_person.second]: "e voc'h",
+        [gr_person.third]: 'e vint',
+      },
+    },
   },
 };
 
@@ -50,6 +62,8 @@ export function bezan({
 }) {
   if (subjectType === gr_subject_type.definedSubject) {
     if (before === gr_entity.attribute) {
+      return conjugation[mode][tense][number][person];
+    } else if (before === gr_entity.complement) {
       return conjugation[mode][tense][number][person];
     } else if (before === gr_entity.subject) {
       if (form === gr_form.negative) {

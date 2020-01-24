@@ -9,6 +9,7 @@
  */
 export const gr_tense = {
   present: 'present',
+  future: 'future',
 };
 
 /**
@@ -28,6 +29,7 @@ export const gr_number = {
 
 export const gr_entity = {
   attribute: 'attribute',
+  complement: 'complement',
   subject: 'subject',
   ccl: 'ccl',
   present_participle: 'present_participle',
