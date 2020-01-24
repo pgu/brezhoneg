@@ -47,6 +47,18 @@ const conjugation = {
         [gr_person.third]: 'e vint',
       },
     },
+    [gr_tense.past_of_habits]: {
+      [gr_number.singular]: {
+        [gr_person.first]: 'e vezen',
+        [gr_person.second]: 'e vezes',
+        [gr_person.third]: 'e veze',
+      },
+      [gr_number.plural]: {
+        [gr_person.first]: 'e vezemp',
+        [gr_person.second]: "e vezec'h",
+        [gr_person.third]: 'e vezent',
+      },
+    },
   },
 };
 

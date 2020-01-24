@@ -11,6 +11,7 @@ export const gr_tense = {
   present: 'present',
   present_of_habits: 'present_of_habits',
   future: 'future',
+  past_of_habits: 'past_of_habits',
 };
 
 /**
