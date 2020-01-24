@@ -105,6 +105,8 @@ export function bezan({
             return 'a vo';
           } else if (tense === gr_tense.present_of_habits) {
             return 'a vez';
+          } else if (tense === gr_tense.past_of_habits) {
+            return 'a veze';
           } else {
             throw Error(`Unsupported tense ${tense}`);
           }
