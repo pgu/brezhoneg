@@ -91,6 +91,8 @@ export function bezan({
             return 'zo';
           } else if (tense === gr_tense.future) {
             return 'a vo';
+          } else if (tense === gr_tense.present_of_habits) {
+            return 'a vez';
           } else {
             throw Error(`Unsupported tense ${tense}`);
           }
