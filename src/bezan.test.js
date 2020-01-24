@@ -72,7 +72,7 @@ test('should return present tense of bezañ when an attribute is placed before',
  * Present
  * Subject | verb (affirmative) | attribute
  */
-test('should return present tense of bezañ when a subject is before bezañ', () => {
+test('should return present tense of bezañ when a subject is placed before', () => {
   expect(
     bezan({
       before: gr_entity.subject,
@@ -132,7 +132,7 @@ test('should return present tense of bezañ when a subject is before bezañ', ()
  * Present
  * Subject | verb (negative) | attribute
  */
-test('should return present tense of bezañ when a subject is before bezañ and negative', () => {
+test('should return present tense of bezañ when a subject is placed before and negative', () => {
   expect(
     bezan({
       before: gr_entity.subject,
@@ -259,7 +259,7 @@ test('should return present tense of bezañ in location semantic or with present
  * Present
  * Subject | verb (affirmative) | CCL or present participle
  */
-test('should return present tense of bezañ when a subject is before bezañ', () => {
+test('should return present tense of bezañ when a subject is placed before, in location semantic', () => {
   expect(
     bezan({
       before: gr_entity.subject,
@@ -325,7 +325,7 @@ test('should return present tense of bezañ when a subject is before bezañ', ()
  * Present
  * Subject | verb (negative) | CCL or present participle
  */
-test('should return present tense of bezañ when a subject is before bezañ and negative and followed by CCL or present participle', () => {
+test('should return present tense of bezañ when a subject is placed before, in location semantic, and negative', () => {
   expect(
     bezan({
       before: gr_entity.subject,
@@ -432,7 +432,7 @@ test('should return present tense of bezañ when asking for the presence of the 
  * verb (negative) | subject (non-countable or plural)
  * N'eus ket chistr
  */
-test('should return present tense of bezañ when stating the non-presence of something', () => {
+test('should return present tense of bezañ when stating the non-presence of something, plural', () => {
   expect(
     bezan({
       subjectType: gr_subject_type.undefinedSubject,
@@ -450,7 +450,7 @@ test('should return present tense of bezañ when stating the non-presence of som
  * verb (negative) | subject (singular)
  * N'eus banne chistr ebet
  */
-test('should return present tense of bezañ when stating the non-presence of something', () => {
+test('should return present tense of bezañ when stating the non-presence of something, singular', () => {
   expect(
     bezan({
       subjectType: gr_subject_type.undefinedSubject,
@@ -521,4 +521,64 @@ test('should return futur tense of bezañ when a complement is placed before', (
       number: gr_number.plural,
     })
   ).toBe('e vint');
+});
+
+/**
+ * Future
+ * Subject | verb | complement
+ */
+test('should return future tense of bezañ when a subject is placed before', () => {
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('a vo');
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('a vo');
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('a vo');
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('a vo');
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe('a vo');
+
+  expect(
+    bezan({
+      before: gr_entity.subject,
+      tense: gr_tense.future,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('a vo');
 });

@@ -73,8 +73,14 @@ export function bezan({
           return "n'" + conjugation[mode][tense][number][person] + ' ket';
         }
       } else if (form === gr_form.affirmative) {
-        if (mode === gr_mode.indicative && tense === gr_tense.present) {
-          return 'zo';
+        if (mode === gr_mode.indicative) {
+          if (tense === gr_tense.present) {
+            return 'zo';
+          } else if (tense === gr_tense.future) {
+            return 'a vo';
+          } else {
+            throw Error(`Unsupported tense ${tense}`);
+          }
         } else {
           throw Error(`Unsupported tense ${tense} and mode ${mode}`);
         }
