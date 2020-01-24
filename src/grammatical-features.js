@@ -9,6 +9,7 @@
  */
 export const gr_tense = {
   present: 'present',
+  present_of_habits: 'present_of_habits',
   future: 'future',
 };
 
@@ -20,6 +21,7 @@ export const gr_person = {
   first: 'first',
   second: 'second',
   third: 'third',
+  third_neutral: 'neutral_third',
 };
 
 export const gr_number = {

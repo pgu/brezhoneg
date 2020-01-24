@@ -22,6 +22,19 @@ const conjugation = {
         [gr_person.third]: 'int',
       },
     },
+    [gr_tense.present_of_habits]: {
+      [gr_number.singular]: {
+        [gr_person.first]: 'e vezan',
+        [gr_person.second]: 'e vezez',
+        [gr_person.third]: 'e vez',
+        [gr_person.third_neutral]: 'e vezer',
+      },
+      [gr_number.plural]: {
+        [gr_person.first]: 'e vezomp',
+        [gr_person.second]: 'e vezit',
+        [gr_person.third]: 'e vezont',
+      },
+    },
     [gr_tense.future]: {
       [gr_number.singular]: {
         [gr_person.first]: 'e vin',

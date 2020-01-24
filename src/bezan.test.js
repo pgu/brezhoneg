@@ -582,3 +582,72 @@ test('should return future tense of bezañ when a subject is placed before', () 
     })
   ).toBe('a vo');
 });
+
+/**
+ * Present
+ * Complement | verb
+ */
+test('should return present of habit of bezañ when a complement is placed before', () => {
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('e vezan');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('e vezez');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('e vez');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('e vezomp');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe('e vezit');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('e vezont');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.present_of_habits,
+      person: gr_person.third_neutral,
+      number: gr_number.singular,
+    })
+  ).toBe('e vezer');
+});
