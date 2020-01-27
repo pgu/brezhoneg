@@ -840,3 +840,65 @@ test('should return past of habit of bezañ when a subject is placed before', ()
     })
   ).toBe('a veze');
 });
+
+/**
+ * Past (Imperfect)
+ * Attribute | verb | subject
+ */
+test('should return past tense of bezañ', () => {
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.first,
+      number: gr_number.singular,
+    })
+  ).toBe('e oan');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.second,
+      number: gr_number.singular,
+    })
+  ).toBe('e oas');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.third,
+      number: gr_number.singular,
+    })
+  ).toBe('e oa');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.first,
+      number: gr_number.plural,
+    })
+  ).toBe('e oamp');
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.second,
+      number: gr_number.plural,
+    })
+  ).toBe("e oac'h");
+
+  expect(
+    bezan({
+      before: gr_entity.attribute,
+      tense: gr_tense.past,
+      person: gr_person.third,
+      number: gr_number.plural,
+    })
+  ).toBe('e oant');
+});
+
+// TODO passé composé

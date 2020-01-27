@@ -59,6 +59,18 @@ const conjugation = {
         [gr_person.third]: 'e vezent',
       },
     },
+    [gr_tense.past]: {
+      [gr_number.singular]: {
+        [gr_person.first]: 'e oan',
+        [gr_person.second]: 'e oas',
+        [gr_person.third]: 'e oa',
+      },
+      [gr_number.plural]: {
+        [gr_person.first]: 'e oamp',
+        [gr_person.second]: "e oac'h",
+        [gr_person.third]: 'e oant',
+      },
+    },
   },
 };
 
